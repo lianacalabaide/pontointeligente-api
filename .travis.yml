@@ -3,5 +3,5 @@ jdk:
   - openjdk10
   - openjdk11
   - openjdk16
-script:
+before_install:
   - chmod +x mvnw
