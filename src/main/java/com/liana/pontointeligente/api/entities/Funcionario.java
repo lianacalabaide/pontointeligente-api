@@ -1,11 +1,9 @@
 package com.liana.pontointeligente.api.entities;
 
-import java.beans.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
