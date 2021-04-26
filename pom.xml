@@ -58,6 +58,10 @@
     		<artifactId>hibernate-entitymanager</artifactId>
     		<version>5.4.30.Final</version>
 		</dependency>	
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
