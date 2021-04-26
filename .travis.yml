@@ -1,3 +1,10 @@
 language: java
 jdk:
   - openjdk11
+  - oraclejdk8
+  - oraclejdk11
+  - openjdk10
+  - openjdk11
+  - openjdk16
+script:
+  - chmod +x mvnw
