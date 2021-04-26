@@ -14,7 +14,7 @@
 	<name>pontoInteligente</name>
 	<description>API para o sistema de ponto inteligente</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>16</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
