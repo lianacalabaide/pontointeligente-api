@@ -1,7 +1,6 @@
 package com.liana.pontointeligente.api.service;
 
 import static org.mockito.Mockito.any;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
