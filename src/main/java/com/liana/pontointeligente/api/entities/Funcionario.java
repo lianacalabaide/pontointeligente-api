@@ -210,7 +210,7 @@ public class Funcionario implements Serializable {
 				"Perfil="+this.perfil+", " +
 				"Data criacao="+this.dataCriacao+", " +
 				"Data atualizacao="+this.dataAtualizacao+ ", "+
-				"Empresa = "+this.empresa.toString() + "]";
+				"Empresa = "+this.empresa + "]";
 
 	}
 }
