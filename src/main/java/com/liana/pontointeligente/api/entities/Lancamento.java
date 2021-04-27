@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -129,6 +128,6 @@ public class Lancamento implements Serializable {
 	public String toString() {
 		return " Lancamento[ id=" + this.id + ", " + "Data = " + data + ", " + "Descricao = " + descricao + ", "
 				+ "Localizacao = " + localizacao + ", " + "Data criacao = " + dataCriacao + ", " + "Data atualizacao = "
-				+ dataAtualizacao + ", " + "Tipo = " + tipo + ", " + "Funcionario = " + funcionario.toString() + "]";
+				+ dataAtualizacao + ", " + "Tipo = " + tipo + ", " + "Funcionario = " + funcionario + "]";
 	}
 }
