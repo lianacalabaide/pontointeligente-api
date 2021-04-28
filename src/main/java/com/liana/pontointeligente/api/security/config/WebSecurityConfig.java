@@ -62,10 +62,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 	
-	/*@Override
+	@Override
 	public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/**");
-	}*/
+	}
 
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	@Override
