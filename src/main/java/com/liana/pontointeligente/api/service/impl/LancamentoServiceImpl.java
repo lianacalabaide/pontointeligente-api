@@ -3,6 +3,8 @@ package com.liana.pontointeligente.api.service.impl;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -27,12 +29,14 @@ public class LancamentoServiceImpl implements LancamentoService {
 	}
 
 	@Override
+	@Cacheable("lancamentoPorId")
 	public Optional<Lancamento> buscarLancamentoPorId(Long id) {
 		log.info("Buscar Lançamento por ID {}",id);
 		return lancamentoRepository.findById(id);
 	}
 
 	@Override
+	@CachePut("lancamentoPorId")
 	public Lancamento persistir(Lancamento lancamento) {
 		log.info("Persistir lancamento {}", lancamento);
 		return this.lancamentoRepository.save(lancamento);

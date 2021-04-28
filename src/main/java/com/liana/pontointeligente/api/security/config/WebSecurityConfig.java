@@ -20,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.liana.pontointeligente.api.security.JwtAuthenticationEntryPoint;
 import com.liana.pontointeligente.api.security.filter.JwtAuthenticationTokenFilter;
 
-import jdk.internal.org.jline.utils.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Configuration
