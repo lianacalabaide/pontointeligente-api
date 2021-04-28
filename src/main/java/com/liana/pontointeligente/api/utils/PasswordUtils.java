@@ -21,7 +21,7 @@ public class PasswordUtils {
 			return senha;
 		}
 		
-		log.info("Gerar bCrypt");
+		log.info("Gerar bCrypt {}",senha);
 		BCryptPasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
 		return bCryptEncoder.encode(senha);
 	}
