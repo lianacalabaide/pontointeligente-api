@@ -40,7 +40,7 @@ public class EmpresaController {
 		
 		Response<EmpresaDto> response = new Response<EmpresaDto>();
 		Optional<Empresa> empresa = this.empresaService.buscaPorCnpj(cnpj);
-		if (empresa.isEmpty()) {
+		if (!empresa.isPresent()) {
 			log.info("Empresa não encontrada para o CNPJ");
 			response.getErrors().add("Empresa não encontrada para o CNPJ "+ cnpj);
 			return ResponseEntity.badRequest().body(response);

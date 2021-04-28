@@ -52,7 +52,7 @@ public class FuncionarioController {
 		Response<FuncionarioDto> response = new Response<FuncionarioDto>();
 
 		Optional<Funcionario> funcionario = funcionarioService.buscarFuncionarioPorId(id);
-		if (funcionario.isEmpty()) {
+		if (!funcionario.isPresent()) {
 			result.addError(new ObjectError("funcionário", "Funcionário não encontrado na base de dados"));
 		}
 

@@ -135,7 +135,7 @@ public class CadastroPFController {
 	 * @param result
 	 * */
 	private void validarDadosExistentes(CadastroPFDto cadastroPFdto, BindingResult result) {
-		if (this.empresaService.buscaPorCnpj(cadastroPFdto.getCnpj()).isEmpty()) {
+		if (!this.empresaService.buscaPorCnpj(cadastroPFdto.getCnpj()).isPresent()) {
 			result.addError(new ObjectError("empresa", "CNPJ inexistente"));
 		}
 		

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -29,12 +30,13 @@ public class EmpresaControllerTest {
 	@MockBean
 	private EmpresaService empresaService;
 
-	private static final String BUSCAR_EMPRESA_URL_CNPJ = "/api/empresas/cnpj";
+	private static final String BUSCAR_EMPRESA_URL_CNPJ = "/api/empresas/cnpj/";
 	private static final Long ID = 1L;
 	private static final String CPNJ = "00636618000142";
 	private static final String RAZAO_SOCIAL = "Liana Calabaide Corporation";
 
 	@Test
+	@WithMockUser
 	public void testBuscarEmpresaCnpjInvalido() throws Exception {
 		when(empresaService.buscaPorCnpj(CPNJ)).thenReturn(Optional.empty());
 		mvc.perform(MockMvcRequestBuilders.get(BUSCAR_EMPRESA_URL_CNPJ + CPNJ)
@@ -44,6 +46,7 @@ public class EmpresaControllerTest {
 	}
 
 	@Test
+	@WithMockUser
 	public void testBuscarEmpresaCnpj() throws Exception {
 		when(empresaService.buscaPorCnpj(CPNJ)).thenReturn(Optional.of(this.retornarEmpresa()));
 		mvc.perform(MockMvcRequestBuilders.get(BUSCAR_EMPRESA_URL_CNPJ + CPNJ)

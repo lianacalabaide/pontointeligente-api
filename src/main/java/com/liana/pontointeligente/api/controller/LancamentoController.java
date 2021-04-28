@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -48,7 +49,7 @@ public class LancamentoController {
 	@Autowired
 	private FuncionarioService funcionarioService;
 	
-	@Value("$.paginacao.qtd_por_pagina")
+	@Value("${paginacao.qtd_por_pagina}")
 	private int qtdPorPagina;
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -89,7 +90,7 @@ public class LancamentoController {
 		Response<LancamentoDto> response = new Response<LancamentoDto>();
 		
 		Optional<Lancamento> lanc = this.lancamentoService.buscarLancamentoPorId(id);
-		if (lanc.isEmpty()) {
+		if (!lanc.isPresent()) {
 			response.getErrors().add("Lançamento não existente.");
 			return ResponseEntity.badRequest().body(response); 
 		}
@@ -157,11 +158,12 @@ public class LancamentoController {
 	 * @return ResponseEntity<Response<String>>
 	 * */
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<String>> deletaLancamento(@PathVariable("id") Long id){
 		log.error("Removendo lancamento {}", id);
 		Response<String> response = new Response<String>();
 		Optional<Lancamento> lancamentoPorId = this.lancamentoService.buscarLancamentoPorId(id);
-		if(lancamentoPorId.isEmpty()) {
+		if(!lancamentoPorId.isPresent()) {
 			response.getErrors().add("Id de lançamento inexistente na base de dados");
 			return ResponseEntity.badRequest().body(response);
 		}
@@ -213,7 +215,7 @@ public class LancamentoController {
 		}
 		
 		Optional<Funcionario> funcionario = this.funcionarioService.buscarFuncionarioPorId(Long.valueOf(dto.getFuncionarioId()));
-		if (funcionario.isEmpty()) {
+		if (!funcionario.isPresent()) {
 			result.addError(new ObjectError("lancamento", "Funcionario não existente na base de dados"));
 		}
 		
