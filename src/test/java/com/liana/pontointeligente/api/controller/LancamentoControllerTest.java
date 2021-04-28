@@ -65,26 +65,11 @@ public class LancamentoControllerTest {
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.data.id").value(ID_LANCAMENTO))
-				.andExpect(jsonPath("$.data.tipo").value(TIPO))
 				.andExpect(jsonPath("$.data.data").value(this.dateFormat.format(DATA)))
 				.andExpect(jsonPath("$.data.funcionarioId").value(ID_FUNCIONARIO))
 				.andExpect(jsonPath("$.errors").isEmpty());
 	}
-	
-	@Test
-	@WithMockUser
-	public void testCadastrarLancamentoFuncionarioIdInvalido() throws Exception {
-		when(this.funcionarioService.buscarFuncionarioPorId(any())).thenReturn(Optional.empty());
 
-		mvc.perform(MockMvcRequestBuilders.post(URL_BASE)
-				.content(this.obterJsonRequisicaoPost())
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.errors").value("Funcionário não encontrado. ID inexistente."))
-				.andExpect(jsonPath("$.data").isEmpty());
-	}
-	
 	@Test
 	@WithMockUser(username = "admin@admin.com", roles = {"ADMIN"})
 	public void testRemoverLancamento() throws Exception {

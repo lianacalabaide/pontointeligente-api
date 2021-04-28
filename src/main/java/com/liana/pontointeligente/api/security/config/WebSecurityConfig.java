@@ -60,12 +60,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.headers().cacheControl();
 		
 	}
-	
+	/*
 	@Override
 	public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/**");
 	}
-
+*/
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {

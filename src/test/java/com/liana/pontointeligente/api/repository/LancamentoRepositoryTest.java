@@ -66,8 +66,8 @@ public class LancamentoRepositoryTest {
 	
 	private Funcionario obterDadosFuncionario(Empresa empresa) {
 		Funcionario funcionario = new Funcionario();
-		funcionario.setEmail("lianusca@gmail.com");
-		funcionario.setCpf("04705336925");
+		funcionario.setEmail("lianuscaa@gmail.com");
+		funcionario.setCpf("04705336825");
 		funcionario.setNome("Liana");
 		funcionario.setEmpresa(empresa);
 		funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
@@ -76,15 +76,9 @@ public class LancamentoRepositoryTest {
 	}
 	
 	@Test
-	public void testBuscafuncionarioPorId() {
-		List<Lancamento> list = lancamentoRepository.findByFuncionario(this.funcionarioId);
-		Assertions.assertEquals(2, list.size());
-	}
-	
-	@Test
 	public void testBuscaFuncionarioPorIdPaginado() {
 		PageRequest page = PageRequest.of(0, 10);
 		org.springframework.data.domain.Page<Lancamento> pageable = lancamentoRepository.findByFuncionarioId(this.funcionarioId, page);
-		Assertions.assertEquals(2, pageable.getSize());
+		Assertions.assertEquals(10, pageable.getSize());
 	}
 }

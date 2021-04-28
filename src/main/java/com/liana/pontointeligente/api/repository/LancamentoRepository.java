@@ -16,7 +16,7 @@ import com.liana.pontointeligente.api.entities.Lancamento;
 	@NamedQuery(query = "SELECT lanc FROM Lancamento lanc where lanc.funcionario.id = :funcionarioId", name = "LancamentoRepository.findByFuncionarioId")
 })
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long>{
-	List<Lancamento> findByFuncionario(@Param("funcionarioId") long funcionarioId);
+	List<Lancamento> findByFuncionario(@Param("funcionarioId") Long funcionarioId);
 	
-	Page<Lancamento> findByFuncionarioId(@Param("funcionarioId") long funcionarioId, Pageable page);
+	Page<Lancamento> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId, Pageable page);
 }
